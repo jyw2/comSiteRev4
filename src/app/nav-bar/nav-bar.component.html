@@ -1,0 +1,11 @@
+<div>
+  <img *ngIf =  'screenSize > 0' (click) = 'toggle()' src="{{icon}}" alt="">
+  <section *ngIf = 'open' >
+    <a *ngIf = 'screenSize >0' style = 'opacity: 0;'>spacer</a>
+    <a routerLink = ''> HOME</a>
+    <a href = 'price'> PRICING </a>
+    <a routerLink ="gallery"> GALLERY </a>
+     <a routerLink ="contact"> CONTACT</a>
+  </section>
+
+</div>

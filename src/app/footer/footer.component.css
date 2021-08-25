@@ -1,0 +1,28 @@
+a {
+  font-family: 'Mullish', sans-serif;
+  color: rgb(255, 255, 255);
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 1.3rem;
+  letter-spacing: 11px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+a:hover {
+  color: rgb(197, 107, 107);
+  transform: translateY(-3px);
+}
+
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ background-color: black;
+ margin: 0;
+ padding: 0;
+ height: 8vh;
+ box-shadow: 0px 1px 10px rgba(5, 5, 5, 0.541);
+ z-index: 100;
+ width: 100vw;
+ box-sizing: border-box;
+}
