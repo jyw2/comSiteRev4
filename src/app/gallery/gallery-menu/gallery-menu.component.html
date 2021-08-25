@@ -1,14 +1,6 @@
 
     <h1>GALLERY</h1>
 
-    <div id = "overlay">
-        <section id = "innerBox">
-            <h2  id = "exit">x</h2>
-             <img src="" id = "overlayImage" alt="">
-        </section>
-
-    </div>
-
     <nav id ="GND">
-      <app-gallery-filter></app-galleryFilter>
+        <app-gallery-filter *ngFor = 'let filter of filterData' (filterSelectedEmmiter) = 'editFilters($event)' [name] = 'filter.name' [tag] = 'filter.tag'></app-gallery-filter>
     </nav>

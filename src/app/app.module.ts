@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LayoutModule } from '@angular/cdk/layout';
 import { RouterModule, Routes } from '@angular/router';
+import {HttpClientModule} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -42,7 +43,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     LayoutModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

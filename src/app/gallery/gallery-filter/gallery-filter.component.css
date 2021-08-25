@@ -2,7 +2,7 @@ h2{
   display: inline;
   font-size: 25px;
   letter-spacing: 4px;
-  font-family: 'Mulish',sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 .checkbox {
   width: 15px;
@@ -16,9 +16,21 @@ section {
   /* each option section */
   background-color: white;
   display: inline;
+  display: flex;
+  align-items: center;
 }
 
 section :hover{
   cursor: pointer;
 }
 
+@media (max-width: 710px) {
+
+  h2{
+      font-size: 20px ;
+  }
+
+
+
+
+}

@@ -16,12 +16,10 @@
 
 
 
-
-
-
 h1{
   font-size: 80px;
   font-family: 'Mulish', sans-serif ;
+  font-weight: thin;
   text-align: center;
   letter-spacing: 30px;
   margin-top: 70px;
@@ -32,11 +30,6 @@ h1{
   #GND{
       flex-wrap: wrap;
       height: auto;
-
-      /* flex-direction: column;
-      width: 400px;
-      height: auto;
-      margin: auto; */
   }
 
 }
