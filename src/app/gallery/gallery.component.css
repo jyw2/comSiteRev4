@@ -5,6 +5,8 @@
   width: 40%;
   flex-direction: column;
   padding: 6px;
+  height: auto;
+
 }
 
 #right{
@@ -12,10 +14,32 @@
   flex-direction: column;
   width: 60%;
   padding: 6px;
+  height: auto;
+
 }
 
-@media (max-width: 710px) {
+#images{
+  position: relative;
+  width: 75%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-bottom: 200px;
+  z-index: 1;
+}
 
+
+
+@media (max-width: 710px) {
+  #images{
+    flex-direction: column;
+    padding-top: 20px;
+    margin: auto;
+    width: 90%;
+    align-content: center;
+    padding-bottom: 30px;
+}
 
   #left{
       padding:0px;

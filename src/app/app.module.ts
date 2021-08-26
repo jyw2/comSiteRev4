@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LayoutModule } from '@angular/cdk/layout';
 import { RouterModule, Routes } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -16,6 +17,9 @@ import { ReceiveItemComponent } from './priceEstimator/receive/receive-item/rece
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { GalleryFilterComponent } from './gallery/gallery-filter/gallery-filter.component';
+import { OverlayComponent } from './overlay/overlay.component';
+import { ItemComponent } from './item/item.component';
+import { ComplexItemComponent } from './complex-item/complex-item.component';
 
 const routes: Routes = [
   { path: '', component:CharDesComponent},
@@ -38,13 +42,17 @@ const routes: Routes = [
     ReceiveItemComponent,
     FooterComponent,
     ContactComponent,
-    GalleryFilterComponent
+    GalleryFilterComponent,
+    OverlayComponent,
+    ItemComponent,
+    ComplexItemComponent
   ],
   imports: [
     BrowserModule,
     LayoutModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

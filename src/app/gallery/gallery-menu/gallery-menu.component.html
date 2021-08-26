@@ -1,6 +1,13 @@
 
     <h1>GALLERY</h1>
 
-    <nav id ="GND">
-        <app-gallery-filter *ngFor = 'let filter of filterData' (filterSelectedEmmiter) = 'editFilters($event)' [name] = 'filter.name' [tag] = 'filter.tag'></app-gallery-filter>
+    <nav >
+       <section (click) = 'toggle()' *ngIf = 'screenSize > 0'>
+          <p >FILTERS</p>
+        </section>
+        <div id = "GND" *ngIf = 'open'>
+          <app-gallery-filter *ngFor = 'let filter of filterData' (filterSelectedEmmiter) = 'editFilters($event)' [name] = 'filter.name' [tag] = 'filter.tag'></app-gallery-filter>
+        </div>
+
     </nav>
+

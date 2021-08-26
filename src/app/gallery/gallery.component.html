@@ -1,11 +1,11 @@
 <div id = 'content'>
-  <app-gallery-menu></app-gallery-menu>
-  <div id = "images">
-    <section id = "left">
-
+  <app-gallery-menu (apiCall) = 'newImages($event)'></app-gallery-menu>
+  <div id = "images" #images>
+    <section id = "left" #left>
+      <app-gallery-tile [pvLink] = 'image.pvLink' [imageLink] = 'image.link' *ngFor = 'let image of renderedImagesL'></app-gallery-tile>
     </section>
-    <section id = "right">
-
+    <section id = "right" #right>
+      <app-gallery-tile [pvLink] = 'image.pvLink' [imageLink] = 'image.link' *ngFor = 'let image of renderedImagesR'></app-gallery-tile>
     </section>
   </div>
 </div>

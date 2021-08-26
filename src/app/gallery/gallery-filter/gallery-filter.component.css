@@ -4,6 +4,11 @@ h2{
   letter-spacing: 4px;
   font-family: 'Source Sans Pro', sans-serif;
 }
+h2:hover{
+  color: red;
+  transform: translateY(-4px);
+  transition: all 200ms ease-out;
+}
 .checkbox {
   width: 15px;
   height:15px;

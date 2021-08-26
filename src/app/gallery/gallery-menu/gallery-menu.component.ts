@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { MediaQueriesService } from 'src/app/mediaQueries.service';
 
 @Component({
   selector: 'app-gallery-menu',
@@ -15,11 +17,19 @@ export class GalleryMenuComponent implements OnInit {
   //so Runtime is ok.
 
   public filterData:{name:string, tag:string}[] = [];
-  public apiCall = new EventEmitter<{}>()
+  @Output() public apiCall = new EventEmitter<{}>()
+
+  //collapsing bar logic
+  public open:boolean = true;
+  public collapse = false;
+  public screenSizeSub:Subscription = new Subscription;
+  public screenSize:number = 0;
 
 
 
-  constructor( private httpClient: HttpClient) { }
+
+
+  constructor( private httpClient: HttpClient,private mQs: MediaQueriesService) { }
 
   ngOnInit(): void {
     this.filterData.push(
@@ -29,6 +39,40 @@ export class GalleryMenuComponent implements OnInit {
       {name: 'WALLPAPERS', tag: 'wallpaper' },
       {name: 'MOVING WP', tag: 'movingWallpaper' }
     )
+
+    for (let filter of this.filterData ){
+      //add all tags initially
+      this.filters.push(filter.tag)
+    }
+    this.populateImages()
+
+    //collapsing bar logic
+
+    //gets screen size information
+    this.screenSizeSub = this.mQs.getQueries().subscribe((num)=>{
+      if(num> 0){
+        this.open = false
+
+      }else{
+        this.open = true
+      }
+      this.screenSize = num;
+
+    })
+
+    this.mQs.manualCheck()
+
+  }
+
+  toggle(){
+    //for opening collapsing bar
+    if (this.open){
+
+      this.open = false
+    }else {
+
+      this.open = true
+    }
   }
 
   editFilters(filterData:any){
@@ -40,16 +84,32 @@ export class GalleryMenuComponent implements OnInit {
     }else{
       //remove a filter
       const index = this.filters.indexOf(filterData.tag)
-      this.filters.splice(index)
+      this.filters.splice(index,1)
     }
 
     //call API here
-    //switch out the /a fro demo site
-    this.httpClient.get('protojops.com/api/a').subscribe(()=>{
-
+    //switch out the /a from demo site
+    //API uses query strings, one for each tag
+    let key = 0
+    let querySt = '?'
+    for (let tag of this.filters ){
+      querySt += `${key++}=${tag}&`
+    }
+    this.httpClient.get('https://protojops.com/api/a'+ querySt).subscribe((images)=>{
+      //send Images to the main gallery component to render
+      this.apiCall.emit(images)
     })
 
+    // console.log(this.filters)
 
+  }
+
+  populateImages(){
+    //used on first page load to load all images
+    this.httpClient.get('http://protojops.com/api/a/all').subscribe((images)=>{
+      //send Images to the main gallery component to render
+      this.apiCall.emit(images)
+    })
   }
 
 }
