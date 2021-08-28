@@ -1,6 +1,11 @@
 <div (click) = toggle() style = 'cursor: pointer;' [style.opacity] = 'opacity' [ngClass] = ' {removed: action === "add"}' (mouseenter) = hovered() (mouseleave) = hoveredExit()>
   <img [src]='image' alt="">
   <!-- <img src="../../assets/phase2.jpg" alt=""> -->
+  <app-dropdown [list] = 'illustOptions' (optionClicked) = 'setIllust($event)' ></app-dropdown>
+  <app-dropdown [list] = 'renderOptions' (optionClicked) = 'setRender($event)' ></app-dropdown>
+  <app-dropdown [list] = 'shotOptions' (optionClicked) = 'setShot($event)' ></app-dropdown>
   <app-dropdown [list] = 'bgOptions' (optionClicked) = 'setBg($event)' ></app-dropdown>
+  <app-dropdown [list] = 'figureOptions' (optionClicked) = 'setFigure($event)' ></app-dropdown>
+  <app-dropdown [list] = 'movingOptions' (optionClicked) = 'setMove($event)' ></app-dropdown>
   <p>Click to {{action}}</p>
 </div>
