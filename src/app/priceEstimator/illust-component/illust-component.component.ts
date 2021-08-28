@@ -40,12 +40,12 @@ export class IllustComponent implements OnInit {
   public movingItems:{name:string, price:number}[] = []
 
 
-  //main parameters affecting final price
+  //main parameters affecting final price, INITIALIZERS ARE DEFAULTS!
   private illust: string = 'character art'
-  private bgCost:number = 5
-  private figureCost:number = 1
-  private renderRatio:number = 1
-  private shotOption:number = 1
+  private bgCost:number = 0
+  private figureCost:number = this.singleFigPrice
+  private renderRatio:number = 0.4
+  private shotOption:number = 0.57
   private movingCost:number = 0
 
 
@@ -72,7 +72,7 @@ export class IllustComponent implements OnInit {
       {name:'portrait', ratio:0.57},
       {name:'bust', ratio:0.72},
       {name: 'torso', ratio:0.85},
-      {name: 'full figure' ,ratio: this.singleFigPrice}
+      {name: 'full figure', ratio: 1}
     ]
     this.renderItems = [
       {name:'lines only', ratio: 0.4},
@@ -105,7 +105,7 @@ export class IllustComponent implements OnInit {
 
   applyModifiers(base:number){
     //helper function to apply ratio modifiers: render and shot
-    return this.renderRatio*this.shotOption*base
+    return Math.floor(this.renderRatio*this.shotOption*base)
   }
 
   setIllust(item:any){
@@ -143,7 +143,8 @@ export class IllustComponent implements OnInit {
     let ogCost = this.cost
 
     if (this.illust == 'character art'){
-      this.cost = this.applyModifiers(this.figureCost ) + this.movingCost + this.renderRatio*this.bgCost
+
+      this.cost = this.applyModifiers(this.figureCost ) + this.movingCost + Math.floor(this.renderRatio*this.bgCost)
     }else{
       this.cost = this.charsheetCost // character sheet cost
     }
@@ -157,7 +158,9 @@ export class IllustComponent implements OnInit {
      let ogCost = this.cost
 
      if (this.illust == 'character art'){
-       this.cost = this.figureCost+ this.movingCost + this.bgCost
+
+
+      this.cost = this.applyModifiers(this.figureCost ) + this.movingCost + Math.floor(this.renderRatio*this.bgCost)
      }else{
        this.cost = this.charsheetCost // character sheet cost
      }

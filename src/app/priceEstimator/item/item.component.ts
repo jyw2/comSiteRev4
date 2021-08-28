@@ -53,7 +53,6 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.action = 'remove'
     this.opacity = 1
     this.priceChange.emit(this.item.cost)
-    console.log(this.item.cost)
 
   }
 
