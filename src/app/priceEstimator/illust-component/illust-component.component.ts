@@ -99,6 +99,8 @@ export class IllustComponent implements OnInit {
       {name:'no', price: 0},
       {name:'yes', price: 20}
     ]
+
+    this.recalculateOnly()
   }
 
   applyModifiers(base:number){
@@ -137,13 +139,30 @@ export class IllustComponent implements OnInit {
 
   recalculate(){
     //compute the cost
+
+    let ogCost = this.cost
+
     if (this.illust == 'character art'){
-      this.cost = this.figureCost+ this.movingCost + this.bgCost
+      this.cost = this.applyModifiers(this.figureCost ) + this.movingCost + this.renderRatio*this.bgCost
     }else{
       this.cost = this.charsheetCost // character sheet cost
     }
-    this.priceChange.emit(this.cost)
+    //emit the change in cost
+    this.priceChange.emit(this.cost- ogCost)
   }
+
+  recalculateOnly(){
+     //compute the cost only
+
+     let ogCost = this.cost
+
+     if (this.illust == 'character art'){
+       this.cost = this.figureCost+ this.movingCost + this.bgCost
+     }else{
+       this.cost = this.charsheetCost // character sheet cost
+     }
+  }
+
 
 
   ngOnDestroy(): void {

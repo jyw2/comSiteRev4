@@ -32,12 +32,10 @@ export class DropdownComponent implements OnInit {
     this.copyNames(this.items)
     let index = 0
     for(let name of this.list){
-      console.log(name)
       this.map[name as string] = index
       index++
     }
     this.selection = this.list[0]
-    console.log(this.map)
   }
 
   copyNames(mainArray:{name:string,price:number}[] |

@@ -70,7 +70,6 @@ export class PricesComponent implements OnInit  {
   }
 
   setCategory(cat:any){
-    console.log('category set')
     //sets category and changes items accordingly
 
 
@@ -94,7 +93,7 @@ export class PricesComponent implements OnInit  {
     }
 
     //adds all items to total and reset/turn on them
-    this.cost = 100
+    this.cost = 0
 
     //Relying on a timeout to wait for components to
     //load is not a great solution, but works for now
@@ -102,7 +101,6 @@ export class PricesComponent implements OnInit  {
       this.resetItems.next()
     }, 300)
 
-    console.log(this.cost)
 
   }
 
