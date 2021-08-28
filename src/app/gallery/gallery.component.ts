@@ -63,7 +63,7 @@ export class GalleryComponent implements OnInit {
           //don't run if all images loaded
           return
       }
-      if( this.imagesEle.nativeElement.clientHeight-500 - window.scrollY < 0 && this.delay == false){
+      if(  this.delay == false){
         //if bot of page reached load more
           this.render(4,350)
 
@@ -71,7 +71,7 @@ export class GalleryComponent implements OnInit {
 
           setTimeout(() =>{
               this.delay = false
-          }, 200)
+          }, 1500)
 
       }
   })
