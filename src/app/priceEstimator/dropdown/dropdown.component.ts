@@ -43,9 +43,14 @@ export class DropdownComponent implements OnInit {
     //create the name only copy of the array
     let index = 0
     for (let item of mainArray){
-      this.list[index] = item.name
+      if( 'article' in item){
+        this.list[index] = item.article + ' '+ item.name
+      }else{
+        this.list[index] = item.name
+      }
       index++
     }
+
   }
 
   toggle(){

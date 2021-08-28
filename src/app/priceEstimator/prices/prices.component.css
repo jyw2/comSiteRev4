@@ -24,6 +24,15 @@ h2{
   font-family: 'Mulish',sans-serif;
   letter-spacing: 0.2rem;
   font-weight: normal;
+  position: fixed;
+  bottom:0;
+  background-color: white;
+  margin: 0;
+  width: 100vw;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.295);
 }
 
 main{

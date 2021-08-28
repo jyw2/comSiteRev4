@@ -172,6 +172,14 @@ export class IllustComponent implements OnInit {
     this.resetSubs.unsubscribe()
   }
 
+  expose(){
+    if(this.action == 'add'){
+      //adding to package
+      this.action = 'remove'
+      this.opacity = 1
+      this.priceChange.emit(this.cost)
+    }
+  }
 
   toggle(){
     //add or remove the item from the package
