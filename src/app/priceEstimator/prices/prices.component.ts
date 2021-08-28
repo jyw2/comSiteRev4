@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ItemComponent } from '../item/item.component';
 import { Category } from './category.model';
 import { Item } from './item.model';
 
@@ -59,11 +58,8 @@ export class PricesComponent implements OnInit  {
       )
 
     )
-
-
     this.sendNames()
-    this.setCategory(0)
-
+    this.setCategory(this.categories[0])
   }
 
 
@@ -76,13 +72,13 @@ export class PricesComponent implements OnInit  {
     }
   }
 
-  setCategory(catIndex:number){
+  setCategory(cat:any){
     console.log('category set')
 
     //sets category and changes items accordingly
 
 
-    this.category = this.categories[catIndex]
+    this.category = cat
     let bindItems:Item[] = [this.itemOne,this.itemTwo,this.itemThree]
 
 
@@ -101,8 +97,6 @@ export class PricesComponent implements OnInit  {
        //adds all items to total and activate them
        this.initialCost()
        this.resetItems.next()
-
-
     }
 
     //expose and turn on Illust (needs to be)

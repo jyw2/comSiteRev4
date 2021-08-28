@@ -25,9 +25,10 @@ p{
   font-size: 1.8rem;
   margin: 0.2rem;
   text-align: center;
+  transition: 0.2s ease-out;
 }
 
-div:hover{
+p:hover{
   /* when item added */
 
   transform: translateY(-4px);

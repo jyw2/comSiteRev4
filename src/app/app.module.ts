@@ -18,7 +18,7 @@ import { GalleryFilterComponent } from './gallery/gallery-filter/gallery-filter.
 import { OverlayComponent } from './overlay/overlay.component';
 import { ItemComponent } from './priceEstimator/item/item.component';
 import { IllustComponent } from './priceEstimator/illust-component/illust-component.component';
-import { DropdownComponent } from './dropdown/dropdown.component';
+import { DropdownComponent } from './priceEstimator/dropdown/dropdown.component';
 
 const routes: Routes = [
   { path: '', component:CharDesComponent},

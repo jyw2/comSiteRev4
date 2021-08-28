@@ -25,18 +25,12 @@ export class IllustComponent implements OnInit {
   public source:string
   public name:string
   private cost:number = 0
-  private illustItems:{name:string, price:number}[] = []
-  public illustOptions:string[] = []
-  private bgItems:{name:string, price:number}[] = []
-  public bgOptions:string[] = []
-  private figureItems:{name:string, price:number}[] = []
-  public figureOptions:string[] = []
-  private shotItems:{name:string, ratio:number}[] = []
-  public shotOptions:string[] = []
-  private renderItems:{name:string, ratio:number}[] = []
-  public renderOptions:string[] = []
-  private movingItems:{name:string, price:number}[] = []
-  public movingOptions:string[] = []
+  public illustItems:{name:string, price:number}[] = []
+  public bgItems:{name:string, price:number}[] = []
+  public figureItems:{name:string, price:number}[] = []
+  public shotItems:{name:string, ratio:number}[] = []
+  public renderItems:{name:string, ratio:number}[] = []
+  public movingItems:{name:string, price:number}[] = []
 
 
   //main parameters affecting final price
@@ -69,8 +63,8 @@ export class IllustComponent implements OnInit {
     ]
     this.shotItems = [
       {name:'portrait', ratio:0.57},
-      {name:'bust', ratio:0.72)},
-      {name: 'torso', ratio:0.85)},
+      {name:'bust', ratio:0.72},
+      {name: 'torso', ratio:0.85},
       {name: 'full figure' ,ratio: this.singleFigPrice}
     ]
     this.renderItems = [
@@ -98,14 +92,6 @@ export class IllustComponent implements OnInit {
       {name:'yes', price: 0},
       {name:'no', price: 20}
     ]
-
-
-    //create name arrays
-    this.copyNames(this.illustItems,this.illustOptions)
-    this.copyNames(this.bgItems,this.bgOptions)
-    this.copyNames(this.figureItems,this.figureOptions)
-    this.copyNames(this.shotItems,this.shotOptions)
-    this.copyNames(this.renderItems, this.renderOptions)
   }
 
   applyModifiers(base:number){
@@ -113,28 +99,27 @@ export class IllustComponent implements OnInit {
     return this.renderRatio*this.shotOption*base
   }
 
-  setIllust(index:number){
-    this.illust = this.illustItems[index].name
+  setIllust(item:any){
+    this.illust = item.name
+  }
+  setBg(item:any){
+    this.bgCost = item.price
   }
 
-  setBg(index:number){
-    this.bgCost = this.applyModifiers(this.bgItems[index].price)
+  setFigure(item:any){
+    this.figureCost = item.price
   }
 
-  setFigure(index:number){
-    this.figureCost = this.applyModifiers(this.figureItems[index].price)
+  setRender(item:any){
+    this.renderRatio = item.ratio
   }
 
-  setRender(index:number){
-    this.renderRatio = this.renderItems[index].ratio
+  setShot(item:any){
+    this.shotOption = item.ratio
   }
 
-  setShot(index:number){
-    this.shotOption = this.shotItems[index].ratio
-  }
-
-  setMove(index:number){
-    this.movingCost = this.movingItems[index].price
+  setMove(item:any){
+    this.movingCost = item.price
   }
 
   recalculate(){
@@ -147,14 +132,6 @@ export class IllustComponent implements OnInit {
 
   }
 
-  copyNames(mainArray:{name:string, ratio:number}[] | {name:string, price:number} [],copy:string[]){
-    //create the name only copy of the array
-    let index = 0
-    for (let item of mainArray){
-      copy[index] = item.name
-      index++
-    }
-  }
 
   ngOnDestroy(): void {
     this.resetSubs.unsubscribe()

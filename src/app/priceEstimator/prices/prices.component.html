@@ -1,7 +1,7 @@
 
 <div>
   <section>
-    <h1>I want </h1> <app-dropdown [list] = 'catNames' (optionClicked) = 'setCategory($event)'></app-dropdown>
+    <h1>I want </h1> <app-dropdown [items] = 'categories' (optionClicked) = 'setCategory($event)'></app-dropdown>
   </section>
 
   <main>
