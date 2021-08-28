@@ -13,18 +13,25 @@ export class IllustComponent implements OnInit {
   //mainCost params
   private charsheetCost = 90
   private singleFigPrice = 70
+  private cost:number = 0
 
-
-
+  //Communication Params
   @Output() priceChange = new EventEmitter()
   @Input() resetSubj:Subject<void>
   private resetSubs:Subscription
+
+
+  //dynamic image vars
+  public lineSrc:string = 'portraitLines.png'//defaults
+  public bgSrc:string = 'null.png'
+  public renderSrc:string = 'null.png'
+
+  //hover effect params
   public action:string ='remove'
   public opacity:number = 1
 
-  public source:string
-  public name:string
-  private cost:number = 0
+
+  //items for dropdowns
   public illustItems:{name:string, price:number}[] = []
   public bgItems:{name:string, price:number}[] = []
   public figureItems:{name:string, price:number}[] = []
@@ -89,8 +96,8 @@ export class IllustComponent implements OnInit {
     ]
 
     this.movingItems = [
-      {name:'yes', price: 0},
-      {name:'no', price: 20}
+      {name:'no', price: 0},
+      {name:'yes', price: 20}
     ]
   }
 
@@ -101,25 +108,31 @@ export class IllustComponent implements OnInit {
 
   setIllust(item:any){
     this.illust = item.name
+    this.recalculate()
   }
   setBg(item:any){
     this.bgCost = item.price
+    this.recalculate()
   }
 
   setFigure(item:any){
     this.figureCost = item.price
+    this.recalculate()
   }
 
   setRender(item:any){
     this.renderRatio = item.ratio
+    this.recalculate()
   }
 
   setShot(item:any){
     this.shotOption = item.ratio
+    this.recalculate()
   }
 
   setMove(item:any){
     this.movingCost = item.price
+    this.recalculate()
   }
 
   recalculate(){
@@ -129,7 +142,7 @@ export class IllustComponent implements OnInit {
     }else{
       this.cost = this.charsheetCost // character sheet cost
     }
-
+    this.priceChange.emit(this.cost)
   }
 
 
@@ -157,6 +170,7 @@ export class IllustComponent implements OnInit {
     //toggles on the item
     this.action = 'remove'
     this.opacity = 1
+    this.priceChange.emit(this.cost)
 
   }
 

@@ -1,13 +1,20 @@
 <div  style = 'cursor: pointer;' [style.opacity] = 'opacity' [ngClass] = ' {removed: action === "add"}' >
   <!-- <img [src]='image' alt=""> -->
-  <!-- <img src="../../assets/phase2.jpg" alt=""> -->
 
-  <h2>Illustration Type: </h2>
-     <app-dropdown style = 'font-size: 7px;' [items] = 'illustItems' (optionClicked) = 'setIllust($event)' ></app-dropdown>
-  <app-dropdown style = 'font-size: 7px;'[items] = 'renderItems' (optionClicked) = 'setRender($event)' ></app-dropdown>
-  <app-dropdown style = 'font-size: 7px;'[items] = 'shotItems' (optionClicked) = 'setShot($event)' ></app-dropdown>
-  <app-dropdown style = 'font-size: 7px;'[items] = 'bgItems' (optionClicked) = 'setBg($event)' ></app-dropdown>
-  <app-dropdown style = 'font-size: 7px;'[items] = 'figureItems' (optionClicked) = 'setFigure($event)' ></app-dropdown>
-  <app-dropdown style = 'font-size: 7px;'[items] = 'movingItems' (optionClicked) = 'setMove($event)' ></app-dropdown>
-  <p (click) = toggle() (mouseenter) = hovered() (mouseleave) = hoveredExit()>Click to {{action}}</p>
+  <h2 >Illustration</h2>
+  <article>
+    <img id= 'lines' src="../../../{{lineSrc}}" alt="">
+    <img id= 'render' src="../../../{{renderSrc}" alt="">
+    <img id= 'bg' src="../../../{{bgSrc}}" alt="">
+  </article>
+  <section>
+    <app-dropdown prompt = 'Click to Select illustration type' style = 'font-size: 7px;' [items] = 'illustItems' (optionClicked) = 'setIllust($event)' ></app-dropdown>
+    <app-dropdown prompt = 'Render type' style = 'font-size: 7px;'[items] = 'renderItems' (optionClicked) = 'setRender($event)' ></app-dropdown>
+    <app-dropdown prompt = 'Shot type'style = 'font-size: 7px;'[items] = 'shotItems' (optionClicked) = 'setShot($event)' ></app-dropdown>
+    <app-dropdown prompt = 'Background option' style = 'font-size: 7px;'[items] = 'bgItems' (optionClicked) = 'setBg($event)' ></app-dropdown>
+    <app-dropdown prompt = 'Number of characters' style = 'font-size: 7px;'[items] = 'figureItems' (optionClicked) = 'setFigure($event)' ></app-dropdown>
+    <app-dropdown prompt = 'Moving(animated WP)' style = 'font-size: 7px;'[items] = 'movingItems' (optionClicked) = 'setMove($event)' ></app-dropdown>
+    <p (click) = toggle() (mouseenter) = hovered() (mouseleave) = hoveredExit()>Click to {{action}}</p>
+  </section>
+
 </div>

@@ -12,15 +12,17 @@ export class DropdownComponent implements OnInit {
   //generic class for a dropdown
   @Input() public items:{name:string,price:number}[] |
   {name:string, ratio:number}[] | Category[]
+  @Input() public prompt:string = 'Click to select' // dropdown topic
 
   @Output() public optionClicked:EventEmitter<{name:string,price:number} |
   {name:string, ratio:number} | Category> = new EventEmitter()
 
-  public list:string[] = [ 'option1','option2','option3']
+  public list:string[] = [ ]
   //filled on initiation
   public selection:string = this.list[0];
   public isOpen:boolean = false
   private map:{[key:string]:number} = {}
+
 
   constructor() { }
 

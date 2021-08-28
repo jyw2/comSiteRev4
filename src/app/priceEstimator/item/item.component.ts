@@ -52,6 +52,8 @@ export class ItemComponent implements OnInit, OnDestroy {
     //toggles on the item
     this.action = 'remove'
     this.opacity = 1
+    this.priceChange.emit(this.item.cost)
+    console.log(this.item.cost)
 
   }
 

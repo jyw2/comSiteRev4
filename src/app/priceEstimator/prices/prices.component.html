@@ -8,7 +8,7 @@
     <app-item [resetSubj] = 'resetItems'  *ngIf = 'simpleItems > 0' [item] = 'itemOne' (priceChange) = costChange($event)> </app-item>
     <app-item [resetSubj] = 'resetItems'  *ngIf = 'simpleItems > 1' [item] = 'itemTwo' (priceChange) = costChange($event)></app-item>
     <app-item [resetSubj] = 'resetItems' *ngIf = 'simpleItems > 2' [item] = 'itemThree' (priceChange) = costChange($event)></app-item>
-    <app-illust-component [resetSubj] = 'resetItems' #illust *ngIf = 'complexItems > 0'></app-illust-component>
+    <app-illust-component [resetSubj] = 'resetItems' #illust *ngIf = 'complexItems > 0' (priceChange) = costChange($event)></app-illust-component>
   </main>
 
   <h2> Total: ${{cost}}</h2>

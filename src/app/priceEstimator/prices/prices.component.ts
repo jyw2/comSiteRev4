@@ -11,30 +11,25 @@ import { Item } from './item.model';
 })
 export class PricesComponent implements OnInit  {
 
+  //misc vars
   public simpleItems:number
   public complexItems:number
   public catNames:string[] = []
   public cost:number = 0
   private category: Category
 
+  //Item models
   public itemOne:Item = new Item('','',0);
   public itemTwo:Item = new Item('','',0);
   public itemThree:Item = new Item('','',0);
-  public resetItems = new Subject<void>()
-
-
-
   public categories:Category[] = []
 
-  // // Illustration information
-  // public illustrationItem:ComplexItem = new ComplexItem('Illustration',[
-  //   new Item('')
-  // ])
-
-
-  constructor() { }
+  //communication vars
+  public resetItems = new Subject<void>()
 
   ngOnInit(): void {
+
+    //create Items
     this.categories.push( new Category('Character Design','a',
         [
           new Item('In-depth exploration', '../../assets/phase2.jpg', 30),
@@ -49,17 +44,19 @@ export class PricesComponent implements OnInit  {
       )
 
     )
-    this.categories.push( new Category('VTuber Model','a',
-        [
-          new Item('Design', '',100),
-          new Item('Illustration', '',149),
-          new Item('Rigging', '',99)
-        ], 3 , 0
-      )
 
-    )
+    //ENABLE WHEN ASSETS ARE READY
+    // this.categories.push( new Category('VTuber Model','a',
+    //     [
+    //       new Item('Design', '',100),
+    //       new Item('Illustration', '',149),
+    //       new Item('Rigging', '',99)
+    //     ], 3 , 0
+    //   )
+
+    // )
     this.sendNames()
-    this.setCategory(this.categories[0])
+    this.setCategory(this.categories[0])//param is the default Category
   }
 
 
@@ -74,7 +71,6 @@ export class PricesComponent implements OnInit  {
 
   setCategory(cat:any){
     console.log('category set')
-
     //sets category and changes items accordingly
 
 
@@ -94,27 +90,34 @@ export class PricesComponent implements OnInit  {
 
       index++
 
-       //adds all items to total and activate them
-       this.initialCost()
-       this.resetItems.next()
+
     }
 
-    //expose and turn on Illust (needs to be)
+    //adds all items to total and reset/turn on them
+    this.cost = 100
+
+    //Relying on a timeout to wait for components to
+    //load is not a great solution, but works for now
+    setTimeout(()=>{
+      this.resetItems.next()
+    }, 300)
+
+    console.log(this.cost)
 
   }
 
 
-  initialCost(){
-    //sets costs on first visit to a category
-    let netcost = 0
-    for ( let item of this.category.items){
-      netcost += item.cost
-    }
-    if(this.complexItems > 0){
-      // add illust cost
-    }
-    this.cost = netcost
-  }
+  // initialCost(){
+  //   //sets costs on first visit to a category
+  //   let netcost = 0
+  //   for ( let item of this.category.items){
+  //     netcost += item.cost
+  //   }
+  //   if(this.complexItems > 0){
+  //     // add illust cost
+  //   }
+  //   this.cost = netcost
+  // }
 
   costChange(change:number){
     //updates price

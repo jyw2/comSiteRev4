@@ -1,6 +1,5 @@
 <div (click) = toggle() style = 'cursor: pointer;' [style.opacity] = 'opacity' [ngClass] = ' {removed: action === "add"}' (mouseenter) = hovered() (mouseleave) = hoveredExit()>
   <img [src]='item.image' alt="">
-  <!-- <img src="../../assets/phase2.jpg" alt=""> -->
   <h2 [innerText] = 'item.name'></h2>
   <p>Click to {{action}}</p>
   <p *ngIf = 'item.name == "In-depth exploration" ||item.name == "In-depth color exploration" '>Details <a href="/">here.</a></p>
