@@ -11,15 +11,14 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { GalleryTileComponent } from './gallery/gallery-tile/gallery-tile.component';
 import { GalleryMenuComponent } from './gallery/gallery-menu/gallery-menu.component';
 import { PricesComponent } from './priceEstimator/prices/prices.component';
-import { ReceiveComponent } from './priceEstimator/receive/receive.component';
 import { CharDesComponent } from './char-des/char-des.component';
-import { ReceiveItemComponent } from './priceEstimator/receive/receive-item/receive-item.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { GalleryFilterComponent } from './gallery/gallery-filter/gallery-filter.component';
 import { OverlayComponent } from './overlay/overlay.component';
-import { ItemComponent } from './item/item.component';
-import { ComplexItemComponent } from './complex-item/complex-item.component';
+import { ItemComponent } from './priceEstimator/item/item.component';
+import { IllustComponent } from './priceEstimator/illust-component/illust-component.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
 
 const routes: Routes = [
   { path: '', component:CharDesComponent},
@@ -37,15 +36,14 @@ const routes: Routes = [
     GalleryTileComponent,
     GalleryMenuComponent,
     PricesComponent,
-    ReceiveComponent,
     CharDesComponent,
-    ReceiveItemComponent,
     FooterComponent,
     ContactComponent,
     GalleryFilterComponent,
     OverlayComponent,
     ItemComponent,
-    ComplexItemComponent
+    IllustComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,

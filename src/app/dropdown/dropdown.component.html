@@ -1,0 +1,16 @@
+<h3>Click to select</h3>
+<div>
+
+  <main (click) = 'toggle()' >
+
+   <h1>{{selection.toUpperCase()}}</h1>
+    <!-- <h1 id = 'arrow'  [ngClass] = "{rotated: isOpen == true}">></h1 > -->
+  </main>
+  <article>
+    <!-- Why does this work? Article is not absulutely positioned yet takes no room in document... -->
+    <section *ngIf = 'isOpen'>
+      <p *ngFor = 'let element of list' (click) = 'optionSelect(element)'>{{element}}</p>
+    </section>
+  </article>
+
+</div>

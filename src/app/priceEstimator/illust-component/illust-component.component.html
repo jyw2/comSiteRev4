@@ -1,0 +1,6 @@
+<div (click) = toggle() style = 'cursor: pointer;' [style.opacity] = 'opacity' [ngClass] = ' {removed: action === "add"}' (mouseenter) = hovered() (mouseleave) = hoveredExit()>
+  <img [src]='image' alt="">
+  <!-- <img src="../../assets/phase2.jpg" alt=""> -->
+  <app-dropdown [list] = 'bgOptions' (optionClicked) = 'setBg($event)' ></app-dropdown>
+  <p>Click to {{action}}</p>
+</div>

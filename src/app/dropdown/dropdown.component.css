@@ -1,0 +1,57 @@
+div{
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  font-size: 3em;
+  font-family: 'Mulish',sans-serif;
+  padding: 1em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  background-color: black;
+}
+section{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  background-color: black;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+article{
+  position: relative;
+  transform: translateX(-1em);
+}
+
+
+
+main{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+}
+h1{
+  font-size: 1.2em;
+  color: white;
+  letter-spacing: 0.3em;
+
+}
+h3{
+  font-size: 2em;
+  letter-spacing: 0.5em;
+  font-family: 'Source Sans Pro',sans-serif;
+  color: rgb(46, 41, 41);
+  margin: 1px;
+}
+
+p{
+  color: white;
+  font-size: 0.8em;
+  cursor: pointer;
+  margin-top: 0.1em;
+  margin-bottom: 0.1;
+  font-family: 'Source Sans Pro',sans-serif;
+
+}
+
