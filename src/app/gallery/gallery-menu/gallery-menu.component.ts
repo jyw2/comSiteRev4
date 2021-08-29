@@ -42,7 +42,7 @@ export class GalleryMenuComponent implements OnInit {
       {name: 'CHARACTER SHEETS', tag: 'charSheet' },
       {name: 'SPLASH ARTS', tag: 'splashArt' },
       {name: 'WALLPAPERS', tag: 'wallpaper' },
-      {name: 'MOVING WP', tag: 'movingWallpaper' }
+      {name: 'IN DEPTH DESIGN & COLOR', tag: 'inDepth' }
     )
 
     for (let filter of this.filterData ){
