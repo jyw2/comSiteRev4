@@ -114,7 +114,6 @@ export class IllustComponent implements OnInit {
     if(this.illust == 'character art'){
       this.imgLink = 'phase4.jpg'
     }else{
-      console.log('swaap')
       this.imgLink = 'Skullman.jpg'
     }
     this.recalculate()
