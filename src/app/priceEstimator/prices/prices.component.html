@@ -1,15 +1,16 @@
 
 <div>
-  <section>
-    <h1>I want </h1> <app-dropdown [items] = 'categories' (optionClicked) = 'setCategory($event)'></app-dropdown>
+  <section [@spawn0] = ''>
+    <h1>I want </h1>
+    <app-dropdown id = 'mainDrop' [items] = 'categories' (optionClicked) = 'setCategory($event)'></app-dropdown>
   </section>
 
-  <main>
+  <main [@spawn1] = ''>
     <app-item [resetSubj] = 'resetItems'  *ngIf = 'simpleItems > 0' [item] = 'itemOne' (priceChange) = costChange($event)> </app-item>
     <app-item [resetSubj] = 'resetItems'  *ngIf = 'simpleItems > 1' [item] = 'itemTwo' (priceChange) = costChange($event)></app-item>
     <app-item [resetSubj] = 'resetItems' *ngIf = 'simpleItems > 2' [item] = 'itemThree' (priceChange) = costChange($event)></app-item>
-    <app-illust-component [resetSubj] = 'resetItems' #illust *ngIf = 'complexItems > 0' (priceChange) = costChange($event)></app-illust-component>
   </main>
+  <app-illust-component [resetSubj] = 'resetItems' #illust *ngIf = 'complexItems > 0' (priceChange) = costChange($event)></app-illust-component>
 
 
 </div>

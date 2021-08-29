@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { fadeInTriggerDelay, fadeInTriggerNormal } from 'src/app/fadeIn.animation';
 import { MediaQueriesService } from 'src/app/mediaQueries.service';
 
 @Component({
   selector: 'app-gallery-menu',
   templateUrl: './gallery-menu.component.html',
-  styleUrls: ['./gallery-menu.component.css']
+  styleUrls: ['./gallery-menu.component.css'],
+  animations: [fadeInTriggerNormal, fadeInTriggerDelay]
 })
 export class GalleryMenuComponent implements OnInit {
 
@@ -95,7 +97,7 @@ export class GalleryMenuComponent implements OnInit {
     for (let tag of this.filters ){
       querySt += `${key++}=${tag}&`
     }
-    this.httpClient.get('https://protojops.com/api/a'+ querySt).subscribe((images)=>{
+    this.httpClient.get('https://protojops.com/api'+ querySt).subscribe((images)=>{
       //send Images to the main gallery component to render
       this.apiCall.emit(images)
     })
@@ -106,7 +108,7 @@ export class GalleryMenuComponent implements OnInit {
 
   populateImages(){
     //used on first page load to load all images
-    this.httpClient.get('http://protojops.com/api/a/all').subscribe((images)=>{
+    this.httpClient.get('http://protojops.com/api/all').subscribe((images)=>{
       //send Images to the main gallery component to render
       this.apiCall.emit(images)
     })

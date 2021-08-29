@@ -1,19 +1,22 @@
-<div   style = 'cursor: pointer;' [style.opacity] = 'opacity' [ngClass] = ' {removed: action === "add"}' >
+<div  [style.opacity] = 'opacity' [ngClass] = ' {removed: action === "add"}' >
   <!-- <img [src]='image' alt=""> -->
 
-  <h2 >Illustration</h2>
-  <article>
-    <img id= 'lines' src="../../../{{lineSrc}}" alt="">
-    <img id= 'render' src="../../../{{renderSrc}" alt="">
-    <img id= 'bg' src="../../../{{bgSrc}}" alt="">
+
+  <article (click) = toggle()>
+    <img id= 'lines' src="../../../assets/{{imgLink}}" alt="">
+    <h2 >Illustration</h2>
   </article>
   <section>
     <app-dropdown (click) = expose() prompt = 'Click to Select illustration type' style = 'font-size: 7px;' [items] = 'illustItems' (optionClicked) = 'setIllust($event)' ></app-dropdown>
-    <app-dropdown (click) = expose() prompt = 'Render type' style = 'font-size: 7px;'[items] = 'renderItems' (optionClicked) = 'setRender($event)' ></app-dropdown>
+    <main [ngClass] = ' {disabled: illust === "character sheet"}'>
+      <app-dropdown  (click) = expose() prompt = 'Render type' style = 'font-size: 7px;'[items] = 'renderItems' (optionClicked) = 'setRender($event)' ></app-dropdown>
     <app-dropdown (click) = expose() (click) = expose() prompt = 'Shot type'style = 'font-size: 7px;'[items] = 'shotItems' (optionClicked) = 'setShot($event)' ></app-dropdown>
     <app-dropdown (click) = expose() prompt = 'Background option' style = 'font-size: 7px;'[items] = 'bgItems' (optionClicked) = 'setBg($event)' ></app-dropdown>
     <app-dropdown (click) = expose() prompt = 'Number of characters' style = 'font-size: 7px;'[items] = 'figureItems' (optionClicked) = 'setFigure($event)' ></app-dropdown>
     <app-dropdown (click) = expose() prompt = 'Moving(animated WP)' style = 'font-size: 7px;'[items] = 'movingItems' (optionClicked) = 'setMove($event)' ></app-dropdown>
+    </main>
+
+
     <p (click) = toggle() (mouseenter) = hovered() (mouseleave) = hoveredExit()>Click to {{action}}</p>
   </section>
 

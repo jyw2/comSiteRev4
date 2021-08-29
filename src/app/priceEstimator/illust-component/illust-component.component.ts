@@ -22,9 +22,8 @@ export class IllustComponent implements OnInit {
 
 
   //dynamic image vars
-  public lineSrc:string = 'portraitLines.png'//defaults
-  public bgSrc:string = 'null.png'
-  public renderSrc:string = 'null.png'
+  public imgLink = 'phase4.jpg'//defaults
+
 
   //hover effect params
   public action:string ='remove'
@@ -41,7 +40,7 @@ export class IllustComponent implements OnInit {
 
 
   //main parameters affecting final price, INITIALIZERS ARE DEFAULTS!
-  private illust: string = 'character art'
+  public illust: string = 'character art'
   private bgCost:number = 0
   private figureCost:number = this.singleFigPrice
   private renderRatio:number = 0.4
@@ -110,6 +109,13 @@ export class IllustComponent implements OnInit {
 
   setIllust(item:any){
     this.illust = item.name
+    if(this.illust == 'character art'){
+      this.imgLink = 'phase4.jpg'
+    }else{
+      console.log('swaap')
+      this.imgLink = 'Skullman.jpg'
+      this.collapse()
+    }
     this.recalculate()
   }
   setBg(item:any){
@@ -137,6 +143,10 @@ export class IllustComponent implements OnInit {
     this.recalculate()
   }
 
+
+  collapse(){
+    // closes character art only options
+  }
   recalculate(){
     //compute the cost
 

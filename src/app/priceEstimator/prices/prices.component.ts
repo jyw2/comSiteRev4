@@ -2,12 +2,15 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Category } from './category.model';
 import { Item } from './item.model';
+import { fadeInTriggerNormal, fadeInTriggerDelay, fadeInTriggerDelay2} from '../../fadeIn.animation';
 
 
 @Component({
   selector: 'app-prices',
   templateUrl: './prices.component.html',
-  styleUrls: ['./prices.component.css']
+  styleUrls: ['./prices.component.css'],
+  animations: [ fadeInTriggerNormal, fadeInTriggerDelay, fadeInTriggerDelay2 ]
+
 })
 export class PricesComponent implements OnInit  {
 
@@ -32,7 +35,7 @@ export class PricesComponent implements OnInit  {
     //create Items
     this.categories.push( new Category('Character Design','a',
         [
-          new Item('In-depth exploration', '../../assets/phase2.jpg', 30),
+          new Item('In-depth design exploration', '../../assets/phase2.jpg', 30),
           new Item('In-depth color exploration','../../assets/phase3.jpg', 20)
         ], 2 , 1
       )

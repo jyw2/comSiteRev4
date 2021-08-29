@@ -8,6 +8,8 @@ div {
   opacity: 100%;
   margin-top: 1em;
   margin-bottom: 1em;
+  justify-content: center;
+
 }
 a{
   text-decoration: none;
@@ -20,7 +22,11 @@ h2{
   font-size: 2.5rem;
   text-align: center;
 }
-section{padding: 2rem;}
+section{
+
+  padding: 2rem;
+  padding-top: 0px;
+}
 article{
   max-width: 600px;
 }
@@ -32,6 +38,8 @@ p{
   transition: 0.2s ease-out;
 }
 
+
+
 p:hover{
   /* when item added */
 
@@ -42,4 +50,16 @@ p:hover{
 .removed:hover{
 
   transform: translateY(-4px);
+}
+
+.disabled{
+  cursor: default;
+  opacity: 50%;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  div{
+    flex-direction: column;
+  }
 }
