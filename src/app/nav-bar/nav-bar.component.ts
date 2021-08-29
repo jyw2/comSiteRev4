@@ -8,16 +8,20 @@ import { MediaQueriesService } from '../mediaQueries.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit, OnDestroy {
+  //Semi generic navBar component
 
+  //Responsive design vars
   public smallScreen:boolean = false;
   public screenSizeSub:Subscription = new Subscription;
   public screenSize:number = 0;
+
+  // Collapsed navBar vars
   public open:boolean = true;
-  constructor(private mQs: MediaQueriesService) { }
   public icon:string = '../assets/hamburger.png';
 
-  ngOnInit(): void {
+  constructor(private mQs: MediaQueriesService) { }
 
+  ngOnInit(): void {
     //gets screen size information
     this.screenSizeSub = this.mQs.getQueries().subscribe((num)=>{
       if(num> 0){
@@ -30,11 +34,12 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
     })
 
-    this.mQs.manualCheck()
+    this.mQs.manualCheck()// manually triggers check once
 
   }
 
   toggle(){
+    //open or close the navBar
     if (this.open){
       this.icon = '../assets/hamburger.png'
       this.open = false

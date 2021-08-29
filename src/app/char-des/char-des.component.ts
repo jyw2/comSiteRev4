@@ -8,6 +8,7 @@ import { fadeInTriggerNormal, fadeInTriggerDelay, fadeInTriggerDelay2} from '../
   animations: [ fadeInTriggerNormal, fadeInTriggerDelay, fadeInTriggerDelay2 ]
 })
 export class CharDesComponent implements OnInit {
+  // Component for static landing page section
 
   constructor() { }
 

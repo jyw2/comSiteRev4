@@ -11,12 +11,13 @@ import { fadeOutTrigger } from '../fadeOut.animation';
   animations: [fadeInTrigger, fadeOutTrigger]
 })
 export class OverlayComponent implements OnInit, OnDestroy{
-
-  constructor(private overlayService:OverlayService) { }
+  //Overlay component for isolating images
 
   private clickSub = new Subscription
   public imgLink:string = ''
   public open:boolean = false;
+
+  constructor(private overlayService:OverlayService) { }
 
   ngOnInit(): void {
     this.clickSub = this.overlayService.getOverlayCallObs().subscribe((image:string)=>{

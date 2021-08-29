@@ -7,18 +7,21 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
+  //Component that covers the whole gallery section. holds a menu and images
 
   private images:[] = []
-    // Objects with properties of:
-    // rating: {type: Number, required: true, default: 0},
-    // tag:{type: String, required: true},
-    // link: {type: String, required: true},
-    // pvLink:  {type: String, required: false}
+  // Objects with properties of:
+  // rating: {type: Number, required: true, default: 0},
+  // tag:{type: String, required: true},
+  // link: {type: String, required: true},
+  // pvLink:  {type: String, required: false}
 
-    @ViewChild('left')  leftCol:ElementRef;
-    @ViewChild('right') rightCol:ElementRef;
-    @ViewChild('images') imagesEle:ElementRef;
+  //image Containers
+  @ViewChild('left')  leftCol:ElementRef;
+  @ViewChild('right') rightCol:ElementRef;
+  @ViewChild('images') imagesEle:ElementRef;
 
+  //arrays property binded to rendered images in left and right image containers
   public renderedImagesL:
   {
     rating: number,
@@ -42,11 +45,13 @@ export class GalleryComponent implements OnInit {
     link: '',
     pvLink: ''
   }];
-    //images being shown
+
+  //index of images that have been shown
   private imageIndex = 0
-    //index of images that have been shown
+
+  //helper variabe for controlling image rendering on end of page
   private delay = false
-    //helper variabe for controlling image rendering on end of page
+
 
 
   constructor() { }
@@ -57,8 +62,6 @@ export class GalleryComponent implements OnInit {
     //for loading more images as you scroll
     document.addEventListener('scroll',() => {
 
-      console.log(this.imagesEle.nativeElement.clientHeight)
-      console.log( window.scrollY )
       if (this.imageIndex > this.images.length-1){
           //don't run if all images loaded
           return

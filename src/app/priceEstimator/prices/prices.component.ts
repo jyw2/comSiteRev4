@@ -13,6 +13,7 @@ import { fadeInTriggerNormal, fadeInTriggerDelay, fadeInTriggerDelay2} from '../
 
 })
 export class PricesComponent implements OnInit  {
+  //holds all prices related components and controls category choice
 
   //misc vars
   public simpleItems:number
@@ -106,19 +107,6 @@ export class PricesComponent implements OnInit  {
 
 
   }
-
-
-  // initialCost(){
-  //   //sets costs on first visit to a category
-  //   let netcost = 0
-  //   for ( let item of this.category.items){
-  //     netcost += item.cost
-  //   }
-  //   if(this.complexItems > 0){
-  //     // add illust cost
-  //   }
-  //   this.cost = netcost
-  // }
 
   costChange(change:number){
     //updates price

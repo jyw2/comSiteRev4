@@ -7,9 +7,12 @@ import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
   styleUrls: ['./gallery-filter.component.css']
 })
 export class GalleryFilterComponent implements OnInit {
+  //Component that represents a filter option in a menu component
 
+  //is the filter selected
   public selected:boolean = true
 
+  //communication vars
   @Input() public tag:string = ''
   @Input() name:string = ''
   @Output() filterSelectedEmmiter = new EventEmitter<{ isSelected:boolean, tag:string}>();

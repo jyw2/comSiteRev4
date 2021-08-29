@@ -12,29 +12,32 @@ import { MediaQueriesService } from 'src/app/mediaQueries.service';
   animations: [fadeInTriggerNormal, fadeInTriggerDelay]
 })
 export class GalleryMenuComponent implements OnInit {
+  // Component that holds filters and a title
 
   private filters: string[] = []
   //stores tags to send to API to get images
   //Could be replaced with a set but I only have a few elements
   //so Runtime is ok.
 
+  //associates a name to the tag code
   public filterData:{name:string, tag:string}[] = [];
-  @Output() public apiCall = new EventEmitter<{}>()
 
-  //collapsing bar logic
+  //communication vars
+  @Output() public apiCall = new EventEmitter<{}>() // connects to
+  //menu and tells the menu component to re-render the images
+
+  //collapsing bar vars
   public open:boolean = true;
   public collapse = false;
   public screenSizeSub:Subscription = new Subscription;
   public screenSize:number = 0;
 
-
-
-
-
   constructor( private httpClient: HttpClient,private mQs: MediaQueriesService) { }
 
   ngOnInit(): void {
+
     this.filterData.push(
+      //Add the filters
       {name: 'ILLUSTRATION', tag: 'illustration' },
       {name: 'CHARACTER SHEETS', tag: 'charSheet' },
       {name: 'SPLASH ARTS', tag: 'splashArt' },
@@ -47,6 +50,7 @@ export class GalleryMenuComponent implements OnInit {
       this.filters.push(filter.tag)
     }
     this.populateImages()
+
 
     //collapsing bar logic
 
@@ -61,8 +65,7 @@ export class GalleryMenuComponent implements OnInit {
       this.screenSize = num;
 
     })
-
-    this.mQs.manualCheck()
+    this.mQs.manualCheck() // manually trigger the media query on first init
 
   }
 

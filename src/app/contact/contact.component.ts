@@ -8,6 +8,7 @@ import { fadeInTriggerDelay, fadeInTriggerDelay2, fadeInTriggerNormal } from '..
   animations: [ fadeInTriggerNormal,fadeInTriggerDelay,fadeInTriggerDelay2]
 })
 export class ContactComponent implements OnInit {
+  //Component for static contact page
 
   constructor() { }
 

@@ -10,6 +10,10 @@ import { Item } from '../prices/item.model';
   styleUrls: ['./illust-component.component.css']
 })
 export class IllustComponent implements OnInit {
+  //component that holds the illustration item
+  // Has a few dropdowns and item components
+
+
   //mainCost params
   private charsheetCost = 90
   private singleFigPrice = 70
@@ -60,9 +64,6 @@ export class IllustComponent implements OnInit {
 
     //create items
     //set pricing here!
-
-
-
     this.illustItems = [
       {name:'character art', price:0},
       {name:'character sheet', price:0},
@@ -108,48 +109,48 @@ export class IllustComponent implements OnInit {
   }
 
   setIllust(item:any){
+    //an illust option was selected
     this.illust = item.name
     if(this.illust == 'character art'){
       this.imgLink = 'phase4.jpg'
     }else{
       console.log('swaap')
       this.imgLink = 'Skullman.jpg'
-      this.collapse()
     }
     this.recalculate()
   }
   setBg(item:any){
+    //a bg option was selected
     this.bgCost = item.price
     this.recalculate()
   }
 
   setFigure(item:any){
+    //a figure option was selected
     this.figureCost = item.price
     this.recalculate()
   }
 
   setRender(item:any){
+    //a render option was selected
     this.renderRatio = item.ratio
     this.recalculate()
   }
 
   setShot(item:any){
+    //a shot option was selected
     this.shotOption = item.ratio
     this.recalculate()
   }
 
   setMove(item:any){
+    //a move option was selected
     this.movingCost = item.price
     this.recalculate()
   }
 
-
-  collapse(){
-    // closes character art only options
-  }
   recalculate(){
     //compute the cost
-
     let ogCost = this.cost
 
     if (this.illust == 'character art'){
@@ -163,8 +164,7 @@ export class IllustComponent implements OnInit {
   }
 
   recalculateOnly(){
-     //compute the cost only
-
+     //compute the cost only without emiting to the total
      let ogCost = this.cost
 
      if (this.illust == 'character art'){
@@ -183,6 +183,7 @@ export class IllustComponent implements OnInit {
   }
 
   expose(){
+    //Turn on the item and add it to the total
     if(this.action == 'add'){
       //adding to package
       this.action = 'remove'
@@ -215,6 +216,7 @@ export class IllustComponent implements OnInit {
   }
 
   hovered(){
+    //moused over
     if(this.action == 'add'){
       this.opacity = 0.8
     }else {
@@ -223,6 +225,7 @@ export class IllustComponent implements OnInit {
   }
 
   hoveredExit(){
+    //mouse exits
     if(this.action == 'add'){
       this.opacity = 0.3
     }else {

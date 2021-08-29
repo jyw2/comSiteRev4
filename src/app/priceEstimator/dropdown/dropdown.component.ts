@@ -10,25 +10,23 @@ import { Category } from '../prices/category.model';
 })
 export class DropdownComponent implements OnInit {
   //generic class for a dropdown
+
+
+  //Communication vars
   @Input() public items:{name:string,price:number}[] |
-  {name:string, ratio:number}[] | Category[]
-  @Input() public prompt:string = 'Click to select' // dropdown topic
-
+  {name:string, ratio:number}[] | Category[] // main options as objects
+  @Input() public prompt:string = 'Click to select' // sub text on the top of dropdown
   @Output() public optionClicked:EventEmitter<{name:string,price:number} |
-  {name:string, ratio:number} | Category> = new EventEmitter()
+  {name:string, ratio:number} | Category> = new EventEmitter() // sends info to parent components when an option selected
 
-  public list:string[] = [ ]
-  //filled on initiation
-  public selection:string = this.list[0];
-  public isOpen:boolean = false
-  private map:{[key:string]:number} = {}
-
-
-  constructor() { }
+  // Hold dropdown option Info
+  public list:string[] = [] // name only version of items array
+  private map:{[key:string]:number} = {} // maps a value to it's associated index in items
+  public selection:string = this.list[0]; //currently selected option
+  public isOpen:boolean = false // helps toggle()
 
   ngOnInit(): void {
     // pair name with index
-
     this.copyNames(this.items)
     let index = 0
     for(let name of this.list){

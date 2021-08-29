@@ -1,6 +1,7 @@
 
 
 export class Item{
+  // represents an item
 
   constructor(
 

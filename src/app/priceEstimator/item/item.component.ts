@@ -9,15 +9,17 @@ import { Item } from '../prices/item.model';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit, OnDestroy {
-  @Input() item:Item;
-  @Output() priceChange = new EventEmitter()
-  @Input() resetSubj:Subject<void>
+  //Represents a simple item
+
+  //Communication vars
+  @Input() item:Item; //object with all info
+  @Output() priceChange = new EventEmitter() //item was added or removed
+  @Input() resetSubj:Subject<void> // a category was selected
   private resetSubs:Subscription
+
+  //toggle vars
   public action:string ='remove'
   public opacity:number = 1
-
-
-  constructor() { }
 
   ngOnInit(): void {
     //for when a new category is switched to
@@ -29,9 +31,6 @@ export class ItemComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.resetSubs.unsubscribe()
   }
-
-
-
 
   toggle(){
     //add or remove the item from the package
@@ -57,6 +56,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   hovered(){
+    //mouse enter
     if(this.action == 'add'){
       this.opacity = 0.8
     }else {
@@ -65,6 +65,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   hoveredExit(){
+    //mouse exits
     if(this.action == 'add'){
       this.opacity = 0.3
     }else {
