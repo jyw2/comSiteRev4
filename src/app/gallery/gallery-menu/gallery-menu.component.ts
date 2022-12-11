@@ -20,32 +20,32 @@ export class GalleryMenuComponent implements OnInit {
   //so Runtime is ok.
 
   //associates a name to the tag code
-  public filterData:{name:string, tag:string}[] = [];
+  public filterData: { name: string, tag: string }[] = [];
 
   //communication vars
   @Output() public apiCall = new EventEmitter<{}>() // connects to
   //menu and tells the menu component to re-render the images
 
   //collapsing bar vars
-  public open:boolean = true;
+  public open: boolean = true;
   public collapse = false;
-  public screenSizeSub:Subscription = new Subscription;
-  public screenSize:number = 0;
+  public screenSizeSub: Subscription = new Subscription;
+  public screenSize: number = 0;
 
-  constructor( private httpClient: HttpClient,private mQs: MediaQueriesService) { }
+  constructor(private httpClient: HttpClient, private mQs: MediaQueriesService) { }
 
   ngOnInit(): void {
 
     this.filterData.push(
       //Add the filters
-      {name: 'ILLUSTRATION', tag: 'illustration' },
-      {name: 'CHARACTER SHEETS', tag: 'charSheet' },
-      {name: 'SPLASH ARTS', tag: 'splashArt' },
-      {name: 'WALLPAPERS', tag: 'wallpaper' },
-      {name: 'IN DEPTH DESIGN & COLOR', tag: 'inDepth' }
+      { name: 'ILLUSTRATION', tag: 'illustration' },
+      { name: 'CHARACTER SHEETS', tag: 'charSheet' },
+      { name: 'SPLASH ARTS', tag: 'splashArt' },
+      { name: 'WALLPAPERS', tag: 'wallpaper' },
+      { name: 'IN DEPTH DESIGN & COLOR', tag: 'inDepth' }
     )
 
-    for (let filter of this.filterData ){
+    for (let filter of this.filterData) {
       //add all tags initially
       this.filters.push(filter.tag)
     }
@@ -55,11 +55,11 @@ export class GalleryMenuComponent implements OnInit {
     //collapsing bar logic
 
     //gets screen size information
-    this.screenSizeSub = this.mQs.getQueries().subscribe((num)=>{
-      if(num> 0){
+    this.screenSizeSub = this.mQs.getQueries().subscribe((num) => {
+      if (num > 0) {
         this.open = false
 
-      }else{
+      } else {
         this.open = true
       }
       this.screenSize = num;
@@ -69,27 +69,27 @@ export class GalleryMenuComponent implements OnInit {
 
   }
 
-  toggle(){
+  toggle() {
     //for opening collapsing bar
-    if (this.open){
+    if (this.open) {
 
       this.open = false
-    }else {
+    } else {
 
       this.open = true
     }
   }
 
-  editFilters(filterData:any){
+  editFilters(filterData: any) {
     //adds or removes a tag from the filters to send to the API
 
-    if(filterData.isSelected){
+    if (filterData.isSelected) {
       //add a filter
       this.filters.push(filterData.tag)
-    }else{
+    } else {
       //remove a filter
       const index = this.filters.indexOf(filterData.tag)
-      this.filters.splice(index,1)
+      this.filters.splice(index, 1)
     }
 
     //call API here
@@ -97,10 +97,10 @@ export class GalleryMenuComponent implements OnInit {
     //API uses query strings, one for each tag
     let key = 0
     let querySt = '?'
-    for (let tag of this.filters ){
+    for (let tag of this.filters) {
       querySt += `${key++}=${tag}&`
     }
-    this.httpClient.get('https://api.jyuenw.com'+ querySt).subscribe((images)=>{
+    this.httpClient.get('https://api.jyuenw.com/a/' + querySt).subscribe((images) => {
       //send Images to the main gallery component to render
       this.apiCall.emit(images)
     })
@@ -109,9 +109,9 @@ export class GalleryMenuComponent implements OnInit {
 
   }
 
-  populateImages(){
+  populateImages() {
     //used on first page load to load all images
-    this.httpClient.get('https://api.jyuenw.com/all').subscribe((images)=>{
+    this.httpClient.get('https://api.jyuenw.com/a/all').subscribe((images) => {
       //send Images to the main gallery component to render
       this.apiCall.emit(images)
     })
